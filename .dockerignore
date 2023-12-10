@@ -1,0 +1,9 @@
+node_modules
+public
+.cache
+.git*
+Dockerfile
+docker-compose.yml
+README.md
+npm-debug.log
+package-lock.json

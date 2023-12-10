@@ -1,0 +1,22 @@
+version: '3'
+services:
+  develop:
+    build: .
+    volumes:
+      - .:/app
+    command: ./scripts/gatsby-develop.sh
+    ports:
+      - "8000:8000"
+
+  build:
+    build: .
+    volumes:
+      - .:/app
+    command: ./scripts/gatsby-build.sh
+
+  clean:
+    build: .
+    volumes:
+      - .:/app
+    command: ./scripts/gatsby-clean.sh
+

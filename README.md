@@ -1,3 +1,5 @@
+[![CI](https://github.com/moovinzoo/personal-web/actions/workflows/publish-asset-by-new-tag.yml/badge.svg)](https://github.com/moovinzoo/personal-web/actions/workflows/publish-asset-by-new-tag.yml)
+
 ## Quick start
 
 1.  **Start developing**

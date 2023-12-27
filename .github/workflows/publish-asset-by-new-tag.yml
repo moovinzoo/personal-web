@@ -26,5 +26,3 @@ jobs:
           folder: public  # The folder the action should deploy
           repository-name: moovinzoo/moovinzoo.github.io  # The repository to deploy to
           ssh-key: ${{ secrets.PAT }}
-          git-config-name: moovinzoo
-          git-config-email: moovinzoo@gmail.com

@@ -22,7 +22,7 @@ jobs:
       - name: Deploy to GitHub Pages public repo
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          ssh-key: true
+          ssh-key: ${{ secrets.PAT }}
           branch: main  # Branch to deploy to in the GitHub Pages repository
           folder: public  # The folder the action should deploy
           repository-name: moovinzoo/moovinzoo.github.io  # The repository to deploy to

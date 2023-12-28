@@ -3,15 +3,15 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `personal-web`,
+    title: `My Personal Web`,
     siteUrl: `https://moovinzoo.github.io`
   },
-  plugins: [{
+  plugins: ["gatsby-plugin-styled-components", {
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"
     }
-  }, "gatsby-transformer-remark", {
+  }, "gatsby-plugin-mdx", {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "pages",

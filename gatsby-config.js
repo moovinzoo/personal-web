@@ -12,11 +12,16 @@ module.exports = {
       "icon": "src/images/icon.png"
     }
   }, "gatsby-plugin-mdx", {
+    // Add a collection called "posts" that looks for files in content/posts
     resolve: 'gatsby-source-filesystem',
     options: {
-      "name": "pages",
-      "path": "./src/pages/"
+      name: `posts`,
+      path: `./content/posts`,
     },
-    __key: "pages"
+//    options: {
+//      "name": "pages",
+//      "path": "./src/pages/"
+//    },
+//    __key: "pages"
   }]
 };

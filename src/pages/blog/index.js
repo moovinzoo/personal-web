@@ -7,14 +7,14 @@ const BlogPage = ({ data }) => {
   return (
     <Layout pageTitle="My Blog Posts">
       {
-        data.allMdx.nodes.map((node) => (
-          <article key={node.id}>
+        data.allFile.nodes.map((node) => (
+          <article key={node.childMdx.id}>
             <h2>
-              <Link to={`/blog/${node.frontmatter.slug}`}>
-                {node.frontmatter.title}
+              <Link to={`/blog/${node.childMdx.frontmatter.slug}`}>
+                {node.childMdx.frontmatter.title}
               </Link>
             </h2>
-            <p>Posted: {node.frontmatter.date}</p>
+            <p>Posted: {node.childMdx.frontmatter.date}</p>
           </article>
         ))
       }
@@ -24,14 +24,19 @@ const BlogPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMdx(sort: { frontmatter: { date: DESC } }) {
+    allFile(
+      filter: { sourceInstanceName: { eq: "blog" }, extension: { eq: "mdx" } }
+      sort: { childMdx: {frontmatter: { date: DESC } } }
+    ) {
       nodes {
-        frontmatter {
-          date(formatString: "MMMM D, YYYY")
-          title
-          slug
+        childMdx {
+          frontmatter {
+            date(formatString: "MMMM D, YYYY")
+            title
+            slug
+          }
+          id
         }
-        id
       }
     }
   }

@@ -23,6 +23,6 @@ export const query = graphql`
   }
 `
 
-export const Head = () => <Seo title={data.mdx.frontmatter.title} />
+export const Head = ({ title }) => <Seo title={title} />
 
 export default BlogPost

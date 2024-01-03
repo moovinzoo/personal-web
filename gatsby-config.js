@@ -22,7 +22,7 @@ module.exports = {
         // name: `posts`,
         // path: `./content/posts`,
         name: `blog`,
-        path: `./blog`,
+        path: `./content/blog`,
       },
     },
 //    options: {

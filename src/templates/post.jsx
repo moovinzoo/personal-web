@@ -1,18 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
-import { Link } from "gatsby"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
 
-const shortcodes = { Link } // Provide common components here
+// const shortcodes = { Link } // Provide common components here
+// usage: <MDXProvider components={shortcodes}>
 
 export default function PageTemplate({ data, children }) {
   return (
-    <>
-      <h1>{data.mdx.frontmatter.title}</h1>
-      <MDXProvider components={shortcodes}>
+    <Layout pageTitle={data.mdx.frontmatter.title}>
+      <p>{data.mdx.frontmatter.date}</p>
+      <MDXProvider>
         {children}
       </MDXProvider>
-    </>
+    </Layout>
   )
 }
 
@@ -21,7 +23,10 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
+        date(formatString: "MMMM D, YYYY")
       }
     }
   }
 `
+
+export const Head = ({ data }) => <Seo title={data.mdx.frontmatter.title} />

@@ -9,9 +9,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMdx {
         nodes {
           id
-          frontmatter {
-            slug
-          }
           internal {
             contentFilePath
           }
@@ -29,10 +26,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // you'll call `createPage` for each result
   posts.forEach(node => {
+    const filename = path.basename(node.internal.contentFilePath, '.mdx');
     createPage({
-      // As mentioned above you could also query something else like frontmatter.title above and use a>
-      // like slugify to create a slug
-      path: `/blog/${node.frontmatter.slug}`,
+      // Use filename as a slug
+      path: `/blog/${filename}`,
       // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
       component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       // You can use the values in this context in

@@ -1,6 +1,21 @@
 const path = require("path")
 const postTemplate = path.resolve(`./src/templates/post.jsx`)
 
+// Inject slug from filename by field into node
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === "Mdx") {
+    const slug = path.basename(node.internal.contentFilePath, '.mdx');
+
+    createNodeField({
+      node,
+      name: "slug",
+      value: `${slug}`,
+    });
+  }
+};
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
@@ -9,6 +24,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMdx {
         nodes {
           id
+          fields {
+            slug
+          }
           internal {
             contentFilePath
           }
@@ -26,10 +44,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // you'll call `createPage` for each result
   posts.forEach(node => {
-    const filename = path.basename(node.internal.contentFilePath, '.mdx');
     createPage({
-      // Use filename as a slug
-      path: `/blog/${filename}`,
+      path: `/blog/${node.fields.slug}`,
       // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
       component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       // You can use the values in this context in

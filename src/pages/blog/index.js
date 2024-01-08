@@ -12,7 +12,7 @@ const BlogPage = ({ data }) => {
           return (
             <article key={node.id}>
               <h2>
-                <Link to={`/blog/${node.fields.slug}`}>
+                <Link to={`/wiki/${node.fields.slug}`}>
                   {node.frontmatter.title}
                 </Link>
               </h2>

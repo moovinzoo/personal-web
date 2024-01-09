@@ -25,3 +25,4 @@ docker-compose run clean
 - [ ] (Postponed) Append posts in the bottom of every category/index page
 - [ ] (Postponed) Append subdirectories in the bottom of every category/index page
     - [ ] Count posts in every subdirectory
+- [ ] Add markdown linter to add on pre-commit procedure

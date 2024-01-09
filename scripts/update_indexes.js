@@ -1,11 +1,10 @@
 const fs = require('fs').promises
-// const fst = require('fs')
 const path = require('path')
 
 let cnt = 0;
-const scriptDir = __dirname // /home/djlee/Project/personal-web/scripts
-const relativeFilePath = '../content/index.mdx' // ../content/index.mdx
-const targetFilePath = path.resolve(scriptDir, relativeFilePath) // /home/djlee/Project/personal-web/content/index.mdx
+const scriptDir = __dirname
+const relativeFilePath = '../content/index.mdx'
+const targetFilePath = path.resolve(scriptDir, relativeFilePath)
 
 async function extractLinesFromVimwikiIndexFile(path) {
   try {
@@ -90,12 +89,6 @@ async function replaceIndex(targetFlag, newIndex) {
   const relIndexFilePath = targetFlag.substring(1, targetFlag.length).concat(indexFileTail)
   const absIndexFilePath = path.resolve(scriptDir, indexFileHead.concat(relIndexFilePath))
 
-  console.log(++cnt)
-  console.log(absIndexFilePath)
-
-  //TODO: To be removed
-  // console.log(' absIndexFilePath: ' + absIndexFilePath)
-
   // Read the existing content of the file, if it exists
   let oldContent = ''
   try {
@@ -104,9 +97,6 @@ async function replaceIndex(targetFlag, newIndex) {
     console.error(`Error reading the file: ${err}`)
     throw err // Propagate the error
   }
-
-  console.log(++cnt)
-  console.log(oldContent)
 
   // Find index header
   const startIndex = oldContent.indexOf(indexHeader)
@@ -124,8 +114,7 @@ async function replaceIndex(targetFlag, newIndex) {
   fs.writeFile(absIndexFilePath, newContent, 'utf8')
 }
 
-
-async function print() {
+async function update() {
   const origLines = await extractLinesFromVimwikiIndexFile(targetFilePath)
   const indexLines = await extractIndexLines(origLines)
   const indexFlags = indexLines.map(line => toIndexFlag(line))
@@ -133,10 +122,8 @@ async function print() {
   indexFlags.forEach(indexFlag => {
 
     const newIndex = toIndexFormat(modifyLinesBy(indexFlag, origLines))
-    //TODO: To be removed
-    // console.log('newIndex: ' + newIndex)
     replaceIndex(indexFlag, newIndex)
   })
 }
 
-print()
+update()

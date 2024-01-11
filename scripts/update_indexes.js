@@ -19,13 +19,12 @@ async function extractLinesFromVimwikiIndexFile(filePath) {
 // Function to filter lines that match a given path
 function filterLinesMatchesGivenPath(path, lines) {
   const result = lines.filter(line => line.includes(path));
-  result.shift(); // remove 1st parent
+  result.shift(); // remove 1st element (category)
   return result;
 }
 
 // Function to extract lines containing '/index)'
 function extractIndexLines(lines) {
-
   const indexFlag = '/index)';
   return lines.filter(line => line.includes(indexFlag));
 }
@@ -33,7 +32,7 @@ function extractIndexLines(lines) {
 // Function to convert line to '(/path/'
 function toIndexFlag(line) {
   const match = line.match(/\]\(([^)]*\/)index\)/);
-return match ? `(${match[1]}` : null;
+  return match ? `(${match[1]}` : null;
 }
 
 // Function to initialize indentation based on the first line
@@ -113,22 +112,22 @@ async function replaceIndex(targetFlag, newIndex, scriptDir) {
 async function updateIndexFiles() {
   const scriptDir = __dirname;
   const targetFilePath = path.resolve(scriptDir, '../content/index.mdx');
-
+  
   try {
     // Extract original lines from the Vimwiki index file
     const origLines = await extractLinesFromVimwikiIndexFile(targetFilePath);
-
+    
     // Extract lines containing '/index)'
     const indexLines = extractIndexLines(origLines);
-
+    
     // Extract index flags from the lines
     const indexFlags = indexLines.map(line => toIndexFlag(line));
-
+    
     // Iterate through each index flag and update the index file
     for (const indexFlag of indexFlags) {
       // Modify the lines to match the current path
       const newIndex = toIndexFormat(modifyLinesBy(indexFlag, origLines));
-
+      
       // Replace the content of the index file
       await replaceIndex(indexFlag, newIndex, scriptDir);
     }

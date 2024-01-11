@@ -7,7 +7,7 @@ import Seo from "../components/seo";
 const CustomLink = props => {
   var href = `../${props.href}`;
   return <Link to={href} style={{ color: "green" }} {...props} />
-}:
+};
 
 const shortcodes = {
   a: CustomLink
@@ -21,8 +21,8 @@ export default function PageTemplate({ data, children }) {
         {children}
       </MDXProvider>
     </Layout>
-  )
-};
+  );
+}
 
 export const query = graphql`
   query($id: String!) {

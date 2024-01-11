@@ -1,7 +1,7 @@
 const path = require("path")
 const postTemplate = path.resolve(`./src/templates/post.jsx`)
 
-const rootPath = "/app/content/blog";
+const rootPath = "/app/content";
 
 // Inject slug from filename by field into node
 exports.onCreateNode = ({ node, actions }) => {

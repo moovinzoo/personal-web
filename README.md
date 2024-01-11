@@ -17,12 +17,14 @@ docker-compose run build
 docker-compose run clean
 ```
 
-## TODOs
-- [o] Make root index
-- [o] Make sample indexes in each directory(category)
-- [ ] Build links by post hierarchy
-    - [ ] Process vimwiki's markdown link to `<a>` link
-- [ ] (Postponed) Append posts in the bottom of every category/index page
-- [ ] (Postponed) Append subdirectories in the bottom of every category/index page
-    - [ ] Count posts in every subdirectory
-- [ ] Add markdown linter to add on pre-commit procedure
+## TODO -implementation
+- [ ] Improve displaying subdirectories in index to show number of posts inside
+- [ ] Add markdown linter to add on pre-commit procedure inside
+
+## TODO -in-the-middle
+- [ ] Enable tagbar by chainging file format of all posts mdx -> md to get 
+
+## TODO -productivity
+- [X] Enable vim-wiki's markdown checkbox toggling feature
+    - [X] Change vim-wiki's keymap from <C-Space> to <Leader>
+    - [X] Change vim-wiki config to recognize all md/mdx files

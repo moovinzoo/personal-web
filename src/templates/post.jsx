@@ -9,11 +9,15 @@ const CustomLink = props => {
   return <Link to={href} style={{ color: "green" }} {...props} />
 }
 
+const shortcodes = {
+  a: CustomLink
+};
+
 export default function PageTemplate({ data, children }) {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <p>{data.mdx.frontmatter.date}</p>
-      <MDXProvider>
+      <MDXProvider components={shortcodes}>
         {children}
       </MDXProvider>
     </Layout>

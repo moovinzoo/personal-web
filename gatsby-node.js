@@ -10,12 +10,10 @@ exports.onCreateNode = ({ node, actions }) => {
     const { createNodeField } = actions;
     const relativePath = path.relative(rootPath, node.internal.contentFilePath);
 
-    const slug = relativePath.substring(0, relativePath.lastIndexOf('.'));
-
     createNodeField({
       node,
       name: "slug",
-      value: `${slug}`,
+      value: slug,
     });
   }
 };

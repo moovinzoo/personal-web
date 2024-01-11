@@ -1,21 +1,27 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { MDXProvider } from "@mdx-js/react"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import React from "react";
+import { graphql, Link } from "gatsby";
+import { MDXProvider } from "@mdx-js/react";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
-// const shortcodes = { Link } // Provide common components here
-// usage: <MDXProvider components={shortcodes}>
+const CustomLink = props => {
+  var href = `../${props.href}`;
+  return <Link to={href} style={{ color: "green" }} {...props} />
+};
+
+const shortcodes = {
+  a: CustomLink
+};
 
 export default function PageTemplate({ data, children }) {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <p>{data.mdx.frontmatter.date}</p>
-      <MDXProvider>
+      <MDXProvider components={shortcodes}>
         {children}
       </MDXProvider>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
@@ -27,6 +33,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export const Head = ({ data }) => <Seo title={data.mdx.frontmatter.title} />
+export const Head = ({ data }) => <Seo title={data.mdx.frontmatter.title} />;

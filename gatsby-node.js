@@ -1,24 +1,7 @@
 const path = require("path")
+
 const postTemplate = path.resolve(`./src/templates/post.jsx`)
-
-const rootPath = "/app/content/blog";
-
-// Inject slug from filename by field into node
-exports.onCreateNode = ({ node, actions }) => {
-
-  if (node.internal.type === "Mdx") {
-    const { createNodeField } = actions;
-    const relativePath = path.relative(rootPath, node.internal.contentFilePath);
-
-    const slug = relativePath.substring(0, relativePath.lastIndexOf('.'));
-
-    createNodeField({
-      node,
-      name: "slug",
-      value: `${slug}`,
-    });
-  }
-};
+const rootPath = "/app/content";
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -28,9 +11,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMdx {
         nodes {
           id
-          fields {
-            slug
-          }
           internal {
             contentFilePath
           }
@@ -48,10 +28,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // you'll call `createPage` for each result
   posts.forEach(node => {
+
+    const contentFilePath = node.internal.contentFilePath;
+    const relativePath = path.relative(rootPath, contentFilePath);
+    const slug = relativePath.substring(0, relativePath.lastIndexOf('.'));
+
     createPage({
-      path: `/blog/${node.fields.slug}`,
+      path: `/wiki/${slug}`,
       // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
-      component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      component: `${postTemplate}?__contentFilePath=${contentFilePath}`,
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },

@@ -9,6 +9,7 @@ exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === "Mdx") {
     const { createNodeField } = actions;
     const relativePath = path.relative(rootPath, node.internal.contentFilePath);
+    const slug = relativePath.substring(0, relPath.lastIndexOf('.'));
 
     createNodeField({
       node,

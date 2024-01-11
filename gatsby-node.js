@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // you'll call `createPage` for each result
   posts.forEach(node => {
     createPage({
-      path: `/blog/${node.fields.slug}`,
+      path: `/wiki/${node.fields.slug}`,
       // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
       component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       // You can use the values in this context in

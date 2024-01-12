@@ -22,9 +22,12 @@ docker-compose run clean
 - [ ] Add markdown linter to add on pre-commit procedure inside
 
 ## TODO -in-the-middle
-- [ ] Enable tagbar by chainging file format of all posts mdx -> md to get 
+- [X] Enable tagbar in .mdx
+  - [X] Write down extention of Universal Ctags for .mdx as vimwiki
+  - [X] Add vim-gutentags plugin to automatical refreshing the index
 
 ## TODO -productivity
-- [X] Enable vim-wiki's markdown checkbox toggling feature
+- [o] Enable vim-wiki's markdown checkbox toggling feature
     - [X] Change vim-wiki's keymap from <C-Space> to <Leader>
     - [X] Change vim-wiki config to recognize all md/mdx files
+- [ ] (Postponed) Java dev-environment setup

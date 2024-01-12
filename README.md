@@ -25,6 +25,7 @@ docker-compose run clean
 - [X] Enable tagbar in .mdx
   - [X] Write down extention of Universal Ctags for .mdx as vimwiki
   - [X] Add vim-gutentags plugin to automatical refreshing the index
+- [ ] Improve pre-commit logic via Husky not to manage script out-of-box
 
 ## TODO -productivity
 - [o] Enable vim-wiki's markdown checkbox toggling feature

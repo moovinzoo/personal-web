@@ -12,19 +12,19 @@ const Heading = styled.h1`
   color: rebeccapurple;
 `;
 
-const NavLinks = styled.ul`
-  display: flex;
-  list-style: none;
-  padding-left: 0;
-`;
+// const NavLinks = styled.ul`
+//   display: flex;
+//   list-style: none;
+//   padding-left: 0;
+// `;
 
-const NavLinkItem = styled.li`
-  padding-right: 2rem;
-`;
+// const NavLinkItem = styled.li`
+//   padding-right: 2rem;
+// `;
 
-const NavLinkText = styled(Link)`
-  color: black;
-`;
+// const NavLinkText = styled(Link)`
+//   color: black;
+// `;
 
 const SiteTitle = styled.header`
   font-size: 2rem;
@@ -47,25 +47,34 @@ const Layout = ({ pageTitle, children }) => {
   return (
     <Container>
       <SiteTitle>{data.site.siteMetadata.title}</SiteTitle>
-      <nav>
-        <NavLinks>
-          <NavLinkItem>
-            <NavLinkText to="/">Home</NavLinkText>
-          </NavLinkItem>
-          <NavLinkItem>
-            <NavLinkText to="/about">About</NavLinkText>
-          </NavLinkItem>
-          <NavLinkItem>
-            <NavLinkText to="/blog">Blog</NavLinkText>
-          </NavLinkItem>
-        </NavLinks>
-      </nav>
       <main>
         <Heading>{pageTitle}</Heading>
         {children}
       </main>
     </Container>
   )
+  // return (
+  //   <Container>
+  //     <SiteTitle>{data.site.siteMetadata.title}</SiteTitle>
+  //     <nav>
+  //       <NavLinks>
+  //         <NavLinkItem>
+  //           <NavLinkText to="/">Home</NavLinkText>
+  //         </NavLinkItem>
+  //         <NavLinkItem>
+  //           <NavLinkText to="/about">About</NavLinkText>
+  //         </NavLinkItem>
+  //         <NavLinkItem>
+  //           <NavLinkText to="/blog">Blog</NavLinkText>
+  //         </NavLinkItem>
+  //       </NavLinks>
+  //     </nav>
+  //     <main>
+  //       <Heading>{pageTitle}</Heading>
+  //       {children}
+  //     </main>
+  //   </Container>
+  // )
 }
 
 export default Layout

@@ -28,7 +28,7 @@ const Heading = styled.h1`
 // `;
 
 const SiteTitle = styled.header`
-  font-size: 2rem;
+  font-size: 1rem;
   color: gray;
   font-weight: 600;
   margin: 0rem 0;

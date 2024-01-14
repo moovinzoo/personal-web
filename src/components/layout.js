@@ -72,6 +72,17 @@ const Layout = ({ pageTitle, directory, children }) => {
       }
     }
   `)
+  const directoryArray = directory.split('/').filter(Boolean);
+
+  const directoryLinks = directoryArray[0] !== '.' ? directoryArray.map((dir, index) => (
+    <Link key={index} to={`/archieve/${directoryArray.slice(0, index + 1).join('/')}`}>
+      {dir}
+    </Link>
+  )) : [];
+
+  const rootLink = (
+    <Link key='0' to={`/archieve/`}> root </Link>
+  );
 
   return (
     <Container>
@@ -83,7 +94,11 @@ const Layout = ({ pageTitle, directory, children }) => {
       </Header>
 
       <main>
-        <p>{directory}</p>
+        <div>
+          {[rootLink, ...directoryLinks]
+            .map((link, index) => <span key={index + 1}>{link}</span>)
+            .reduce((prev, curr) => [prev, ' / ', curr])}
+        </div>
         <Heading>{pageTitle}</Heading>
         {children}
       </main>

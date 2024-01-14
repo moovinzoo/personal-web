@@ -1,6 +1,4 @@
-[![CI](https://github.com/moovinzoo/personal-web/actions/workflows/publish-asset-by-new-tag.yml/badge.svg)](https://github.com/moovinzoo/personal-web/actions/workflows/publish-asset-by-new-tag.yml)
-
-## Quick start
+# Quick start
 
 1.  **Start developing**
 ```shell
@@ -17,18 +15,27 @@ docker-compose run build
 docker-compose run clean
 ```
 
-## TODO -implementation
+# TODO
+
+## Implementation
 - [ ] Improve displaying subdirectories in index to show number of posts inside
 - [ ] Add markdown linter to add on pre-commit procedure inside
+- [.] Modify URI/slug
+  - [X] Append /archieve in the front of to all post URI
+  - [ ] Creating each pages with excluding following /index in node
+  - [ ] Excluding following /index in links
+- [ ] Improve post page
 
-## TODO -in-the-middle
+## In-the-middle
 - [X] Enable tagbar in .mdx
   - [X] Write down extention of Universal Ctags for .mdx as vimwiki
   - [X] Add vim-gutentags plugin to automatical refreshing the index
 - [ ] Improve pre-commit logic via Husky not to manage script out-of-box
+- [ ] Enable Gatsby local functionality
 
-## TODO -productivity
+## Productivity
 - [o] Enable vim-wiki's markdown checkbox toggling feature
-    - [X] Change vim-wiki's keymap from <C-Space> to <Leader>
-    - [X] Change vim-wiki config to recognize all md/mdx files
+  - [X] Change vim-wiki's keymap from <C-Space> to <Leader>
+  - [X] Change vim-wiki config to recognize all md/mdx files
 - [ ] (Postponed) Java dev-environment setup
+  - [ ] Setup LSP

@@ -1,0 +1,11 @@
+/* src/styles/global.css */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}/* TODO: Find out how to produce same effect in body component using styled-component*/ 
+
+/* Add additional styles as needed */

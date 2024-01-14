@@ -3,10 +3,10 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  margin: auto;
-  max-width: 500px;
   font-family: sans-serif;
 `;
+  // margin: auto;
+  // max-width: 500px;
 
 const Heading = styled.h1`
   color: rebeccapurple;

@@ -3,7 +3,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `DJ Lee Archieve`,
+    title: `Lee's Archieve`,
     siteUrl: `https://moovinzoo.github.io`
   },
   plugins: [

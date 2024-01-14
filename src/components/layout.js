@@ -10,6 +10,7 @@ const Container = styled.div`
 
 const Heading = styled.h1`
   color: rebeccapurple;
+  margin: 0rem 0;
 `;
 
 // const NavLinks = styled.ul`
@@ -30,8 +31,9 @@ const SiteTitle = styled.header`
   font-size: 2rem;
   color: gray;
   font-weight: 600;
-  margin: 1rem 0;
+  margin: 0rem 0;
 `;
+// margin: 1rem 0;
 
 const Layout = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`

@@ -27,10 +27,10 @@ const NavLinkText = styled(Link)`
 `;
 
 const SiteTitle = styled.header`
-  font-size: 3rem;
+  font-size: 2rem;
   color: gray;
-  font-weight: 700;
-  margin: 3rem 0;
+  font-weight: 600;
+  margin: 1rem 0;
 `;
 
 const Layout = ({ pageTitle, children }) => {

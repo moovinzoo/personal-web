@@ -4,9 +4,14 @@ import { MDXProvider } from "@mdx-js/react";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
+const indexFlag = "index"
+
 const CustomLink = props => {
-  var href = `../${props.href}`;
-  return <Link to={href} style={{ color: "green" }} {...props} />
+  var slug = props.href;
+  if (slug.endsWith(indexFlag)) {
+    slug = slug.slice(0, -6);
+  }
+  return <Link to={slug} style={{ color: "green" }} {...props} />
 };
 
 const shortcodes = {

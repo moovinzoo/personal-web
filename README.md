@@ -20,9 +20,9 @@ docker-compose run clean
 ## Implementation
 - [ ] Improve displaying subdirectories in index to show number of posts inside
 - [ ] Add markdown linter to add on pre-commit procedure inside
-- [.] Modify URI/slug
+- [o] Modify URI/slug
   - [X] Append /archieve in the front of to all post URI
-  - [ ] Creating each pages with excluding following /index in node
+  - [X] Creating each pages with excluding following /index in node
   - [ ] Excluding following /index in links
 - [ ] Improve post page
 

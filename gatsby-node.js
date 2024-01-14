@@ -2,6 +2,7 @@ const path = require("path")
 
 const postTemplate = path.resolve(`./src/templates/post.jsx`)
 const rootPath = "/app/content";
+const indexFlag = "index";
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -30,11 +31,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   posts.forEach(node => {
 
     const contentFilePath = node.internal.contentFilePath;
-    const relativePath = path.relative(rootPath, contentFilePath);
-    const slug = relativePath.substring(0, relativePath.lastIndexOf('.'));
+    const relPath = path.relative(rootPath, contentFilePath);
+    let slug = relPath.substring(0, relPath.lastIndexOf('.'));
+    if (slug.endsWith(indexFlag)) {
+      slug = slug.slice(0, -6);
+    }
 
     createPage({
-      path: `/wiki/${slug}`,
+      path: `archieve/${slug}`,
       // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
       component: `${postTemplate}?__contentFilePath=${contentFilePath}`,
       // You can use the values in this context in

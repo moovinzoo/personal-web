@@ -4,6 +4,19 @@ const postTemplate = path.resolve(`./src/templates/post.jsx`)
 const rootPath = "/app/content";
 const indexFlag = "index";
 
+exports.onCreateNode = ({ node, actions }) => {
+  if (node.internal.type === 'Mdx') {
+    const { createNodeField } = actions;
+    const contentFilePath = node.internal.contentFilePath;
+    const relPath = path.relative(rootPath, contentFilePath);
+    createNodeField({
+      node,
+      name: 'directory',
+      value: path.dirname(relPath),
+    });
+  }
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 

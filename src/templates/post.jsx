@@ -20,7 +20,7 @@ const shortcodes = {
 
 export default function PageTemplate({ data, children }) {
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
+    <Layout pageTitle={data.mdx.frontmatter.title} directory={data.mdx.fields.directory}>
       <p>{data.mdx.frontmatter.date}</p>
       <MDXProvider components={shortcodes}>
         {children}
@@ -35,6 +35,9 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM D, YYYY")
+      }
+      fields {
+        directory
       }
     }
   }

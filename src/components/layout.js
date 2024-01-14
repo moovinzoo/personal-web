@@ -62,7 +62,7 @@ const Heading = styled.h1`
   margin: 0rem 0;
 `;
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ pageTitle, directory, children }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -83,6 +83,7 @@ const Layout = ({ pageTitle, children }) => {
       </Header>
 
       <main>
+        <p>{directory}</p>
         <Heading>{pageTitle}</Heading>
         {children}
       </main>

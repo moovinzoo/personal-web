@@ -3,6 +3,11 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 const Container = styled.div`
+  display: flex;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: sans-serif;
 `;
   // margin: auto;

@@ -13,11 +13,6 @@ const Container = styled.div`
   // margin: auto;
   // max-width: 500px;
 
-const Heading = styled.h1`
-  color: rebeccapurple;
-  margin: 0rem 0;
-`;
-
 // const NavLinks = styled.ul`
 //   display: flex;
 //   list-style: none;
@@ -32,13 +27,40 @@ const Heading = styled.h1`
 //   color: black;
 // `;
 
-const SiteTitle = styled.header`
+const Header = styled.header`
+`;
+
+const BlockDiv = styled.div`
+  display: block;
+`;
+
+const SiteTitle = styled.a`
+  display: flex;
+  float: left;
   font-size: 1rem;
-  color: gray;
+  color: black;
   font-weight: 600;
   margin: 0rem 0;
 `;
+
+const SiteTitle2 = styled.a`
+  display: inline-block;
+  float: right;
+  font-size: 0.7rem;
+  color: gray;
+  font-weight: 600;
+  margin: 0rem 0;
+  padding-top: 0.3rem;
+  padding-left: 0.7rem;
+  vertical-align: bottom;
+`;
 // margin: 1rem 0;
+// padding-left: 10px;
+
+const Heading = styled.h1`
+  color: rebeccapurple;
+  margin: 0rem 0;
+`;
 
 const Layout = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`
@@ -53,13 +75,21 @@ const Layout = ({ pageTitle, children }) => {
 
   return (
     <Container>
-      <SiteTitle>{data.site.siteMetadata.title}</SiteTitle>
+
+      <Header>
+          <SiteTitle href="/">{data.site.siteMetadata.title}</SiteTitle>
+          <SiteTitle2 href="/">resume</SiteTitle2>
+          <SiteTitle2 href="/archieve">root</SiteTitle2>
+      </Header>
+
       <main>
         <Heading>{pageTitle}</Heading>
         {children}
       </main>
     </Container>
   )
+          // <SiteTitle2 href="https://github.com/moovinzoo">GitHub</SiteTitle2>
+
   // return (
   //   <Container>
   //     <SiteTitle>{data.site.siteMetadata.title}</SiteTitle>

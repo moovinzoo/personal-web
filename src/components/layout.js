@@ -57,12 +57,7 @@ const SiteTitle2 = styled.a`
 // margin: 1rem 0;
 // padding-left: 10px;
 
-const Heading = styled.h1`
-  color: rebeccapurple;
-  margin: 0rem 0;
-`;
-
-const Layout = ({ pageTitle, directory, children }) => {
+const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -72,34 +67,15 @@ const Layout = ({ pageTitle, directory, children }) => {
       }
     }
   `)
-  const directoryArray = directory.split('/').filter(Boolean);
-
-  const directoryLinks = directoryArray[0] !== '.' ? directoryArray.map((dir, index) => (
-    <Link key={index} to={`/archieve/${directoryArray.slice(0, index + 1).join('/')}`}>
-      {dir}
-    </Link>
-  )) : [];
-
-  const rootLink = (
-    <Link key='0' to={`/archieve/`}> root </Link>
-  );
 
   return (
     <Container>
-
       <Header>
           <SiteTitle href="/">{data.site.siteMetadata.title}</SiteTitle>
           <SiteTitle2 href="/">resume</SiteTitle2>
           <SiteTitle2 href="/archieve">root</SiteTitle2>
       </Header>
-
       <main>
-        <div>
-          {[rootLink, ...directoryLinks]
-            .map((link, index) => <span key={index + 1}>{link}</span>)
-            .reduce((prev, curr) => [prev, ' / ', curr])}
-        </div>
-        <Heading>{pageTitle}</Heading>
         {children}
       </main>
     </Container>

@@ -1,0 +1,7 @@
+/* src/styles/global.css */
+body {
+  margin: 0;
+  padding: 0;
+}/* TODO: Find out how to produce same effect in body component using styled-component*/ 
+
+/* Add additional styles as needed */

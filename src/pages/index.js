@@ -5,8 +5,9 @@ import Seo from '../components/seo'
 
 // Step 2: Define your component
 const IndexPage = () => {
+    // <Layout pageTitle="Home Page">
   return (
-    <Layout pageTitle="Home Page">
+    <Layout>
       <p>I'm making this by following the Gatsby Tutorial.</p>
     </Layout>
   )

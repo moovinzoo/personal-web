@@ -34,6 +34,7 @@ const Heading = styled.h1`
   margin: 0rem 0;
 `;
 
+// Custom components for MDX post
 const CustomLink = props => {
   var slug = props.href;
   if (slug.endsWith(indexFlag)) {
@@ -42,6 +43,7 @@ const CustomLink = props => {
   return <Link to={slug} style={{ color: "green" }} {...props} />
 };
 
+// Inject all custom components into MDXProvider
 const shortcodes = {
   a: CustomLink
 };

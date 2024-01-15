@@ -37,7 +37,7 @@ const BlockDiv = styled.div`
 const SiteTitle = styled.a`
   display: flex;
   float: left;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: black;
   font-weight: 600;
   margin: 0rem 0;
@@ -46,11 +46,11 @@ const SiteTitle = styled.a`
 const SiteTitle2 = styled.a`
   display: inline-block;
   float: right;
-  font-size: 0.7rem;
+  font-size: 1rem;
+  padding-top: 0.5rem;
   color: gray;
   font-weight: 600;
   margin: 0rem 0;
-  padding-top: 0.3rem;
   padding-left: 0.7rem;
   vertical-align: bottom;
 `;

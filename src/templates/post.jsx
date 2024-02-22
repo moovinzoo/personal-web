@@ -19,11 +19,11 @@ const Directories = ({directory}) => {
   )) : [];
 
   return (
-      <div>
-        {[rootLink, ...dirLinks]
-          .map((link, index) => <span key={index + 1}>{link}</span>)
-          .reduce((prev, curr) => [prev, ' / ', curr])}
-      </div>
+    <div>
+    {[rootLink, ...dirLinks]
+      .map((link, index) => <span key={index + 1}>{link}</span>)
+      .reduce((prev, curr) => [prev, ' / ', curr])}{' /'}
+    </div>
   );
 }
 

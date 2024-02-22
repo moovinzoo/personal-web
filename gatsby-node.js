@@ -1,7 +1,7 @@
 const path = require("path")
 
 const postTemplate = path.resolve(`./src/templates/post.jsx`)
-const rootPath = "/app/content";
+const rootPath = path.resolve(__dirname) + "/content";
 const indexFlag = "index";
 
 exports.onCreateNode = ({ node, actions }) => {

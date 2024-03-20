@@ -15,16 +15,16 @@ docker-compose run build
 docker-compose run clean
 ```
 
-# TODO
+# History
 
 ## Implementation
 - [ ] Improve displaying subdirectories in index to show number of posts inside
 - [ ] Add markdown linter to add on pre-commit procedure inside
 - [X] Modify URI/slug
-  - [X] Append /archieve in the front of to all post URI
-  - [X] Creating each pages with excluding following /index in node
-  - [X] Excluding following /index in links
-- [ ] Improve post page
+  - [X] Append "/archieve" in front of each post URI
+  - [X] Creating pages with excluding following "/index" in node
+  - [X] Excluding following "/index" in links
+- [ ] Improve the format of the post-page
 
 ## In-the-middle
 - [X] Enable tagbar in .mdx

@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-// Function to read lines from a Vimwiki index file
+// Read lines from a Vimwiki index file
 async function extractLinesFromVimwikiIndexFile(filePath) {
   try {
     const data = await fs.readFile(filePath, 'utf8');
@@ -16,32 +16,32 @@ async function extractLinesFromVimwikiIndexFile(filePath) {
   }
 }
 
-// Function to filter lines that match a given path
+// Filter lines under given path
 function filterLinesMatchesGivenPath(path, lines) {
   const result = lines.filter(line => line.includes(path));
   result.shift(); // remove 1st element (category)
   return result;
 }
 
-// Function to extract lines containing '/index)'
+// Extract lines containing '/index)'
 function extractIndexLines(lines) {
   const indexFlag = '/index)';
   return lines.filter(line => line.includes(indexFlag));
 }
 
-// Function to convert line to '(/path/'
+// Convert line to '(/path/'
 function toIndexFlag(line) {
   const match = line.match(/\]\(([^)]*\/)index\)/);
   return match ? `(${match[1]}` : null;
 }
 
-// Function to initialize indentation based on the first line
+// Initialize indentation based on the first line
 function initIndentation(lines) {
   const spaceCnt = lines[0].search(/\S/);
   return lines.map(line => line.substring(spaceCnt));
 }
 
-// Function to modify the path of the elements to match the given path
+// Modify the path of the elements to match the given path
 function modifyPath(pathFlag, lines) {
   // Ensure the flag starts with '(' and ends with '/'
   if (!pathFlag.startsWith('(') || !pathFlag.endsWith('/')) {
@@ -64,19 +64,19 @@ function modifyPath(pathFlag, lines) {
   return result;
 }
 
-// Function to modify new index lines to match the current path
+// Modify new index lines to match the current path
 function modifyLinesBy(pathFlag, origLines) {
   const lines = filterLinesMatchesGivenPath(pathFlag, origLines);
   const indentedLines = initIndentation(lines);
   return modifyPath(pathFlag, indentedLines);
 }
 
-// Function to convert data array to formatted markdown string
+// Convert data array to formatted markdown string
 function toIndexFormat(indexLines) {
   return `# Index\n${indexLines.join('\n')}\n`;
 }
 
-// Function to replace the content of the index file
+// Replace the content of the index file
 async function replaceIndex(targetFlag, newIndex, scriptDir) {
   const indexFileHead = '../content/';
   const indexFileTail = 'index.mdx';
@@ -112,22 +112,22 @@ async function replaceIndex(targetFlag, newIndex, scriptDir) {
 async function updateIndexFiles() {
   const scriptDir = __dirname;
   const targetFilePath = path.resolve(scriptDir, '../content/index.mdx');
-  
+
   try {
     // Extract original lines from the Vimwiki index file
     const origLines = await extractLinesFromVimwikiIndexFile(targetFilePath);
-    
+
     // Extract lines containing '/index)'
     const indexLines = extractIndexLines(origLines);
-    
+
     // Extract index flags from the lines
     const indexFlags = indexLines.map(line => toIndexFlag(line));
-    
+
     // Iterate through each index flag and update the index file
     for (const indexFlag of indexFlags) {
       // Modify the lines to match the current path
       const newIndex = toIndexFormat(modifyLinesBy(indexFlag, origLines));
-      
+
       // Replace the content of the index file
       await replaceIndex(indexFlag, newIndex, scriptDir);
     }

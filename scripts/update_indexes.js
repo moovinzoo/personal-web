@@ -67,6 +67,10 @@ function modifyPath(pathFlag, lines) {
 // Modify new index lines to match the current path
 function modifyLinesBy(pathFlag, origLines) {
   const lines = filterLinesMatchesGivenPath(pathFlag, origLines);
+  if (lines.length == 0) {
+    return [];
+  }
+
   const indentedLines = initIndentation(lines);
   return modifyPath(pathFlag, indentedLines);
 }
